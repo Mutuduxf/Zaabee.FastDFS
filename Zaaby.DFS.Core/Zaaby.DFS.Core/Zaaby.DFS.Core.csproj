@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>1.1.1</PackageVersion>
+    <Authors>Mutuduxf</Authors>
+    <Company>Mutuduxf</Company>
+    <PackageTags>Zaaby Zaabee DFS</PackageTags>
+    <PackageProjectUrl>https://github.com/Mutuduxf/Zaaby.DFS.Core</PackageProjectUrl>
+    <Description>The interfaces and base classes of distributed file system for asp.net core or Zaaby Framework.</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Mutuduxf/Zaaby.DFS.Core/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>1.1.1</PackageVersion>
+    <Authors>Mutuduxf</Authors>
+    <Company>Mutuduxf</Company>
+    <PackageTags>Zaaby Zaabee DFS FastDFS Mongo</PackageTags>
+    <PackageProjectUrl>https://github.com/Mutuduxf/Zaaby.DFS.FastDfsProvider.Mongo</PackageProjectUrl>
+    <Description>Mongo repository for the FastDFS</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Mutuduxf/Zaaby.DFS.FastDfsProvider.Mongo/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
+    <PackageReference Include="Zaaby.DFS.Core" Version="1.1.1" />
+  </ItemGroup>
+</Project>

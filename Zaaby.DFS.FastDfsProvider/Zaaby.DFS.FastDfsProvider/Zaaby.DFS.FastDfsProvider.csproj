@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>1.2.0</PackageVersion>
+    <Authors>Mutuduxf</Authors>
+    <Company>Mutuduxf</Company>
+    <PackageTags>Zaaby Zaabee DFS FastDFS</PackageTags>
+    <PackageProjectUrl>https://github.com/Mutuduxf/Zaaby.DFS.FastDfsProvider</PackageProjectUrl>
+    <Description>FastDFS client wrapper for asp.net core or Zaaby</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Mutuduxf/Zaaby.DFS.FastDfsProvider/master/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>Support file name which contains dot</PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Zaabee.FastDfsClient" Version="1.1.1" />
+    <PackageReference Include="Zaaby.DFS.Core" Version="1.1.1" />
+  </ItemGroup>
+</Project>
