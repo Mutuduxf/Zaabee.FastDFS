@@ -23,7 +23,7 @@ namespace Zaabee.FastDfsClient
         /// </summary>
         /// <param name="groupName">组名</param>
         /// <returns>存储节点实体类</returns>
-        public static StorageNode GetStorageNode(string groupName)
+        public StorageNode GetStorageNode(string groupName)
         {
             var trackerRequest = QueryStoreWithGroupOne.Instance.GetRequest(groupName);
 
@@ -76,10 +76,10 @@ namespace Zaabee.FastDfsClient
 
             var storeEndPoint = new IPEndPoint(IPAddress.Parse(trackerResponse.IpStr), trackerResponse.Port);
 
-            var storageReqeust = Storage.UploadSlaveFile.Instance.GetRequest(storeEndPoint,
+            var storageRequest = Storage.UploadSlaveFile.Instance.GetRequest(storeEndPoint,
                 contentByte.Length, masterFilename, prefixName, fileExt, contentByte);
 
-            var storageResponse = new UploadFile.Response(storageReqeust.GetResponse());
+            var storageResponse = new UploadFile.Response(storageRequest.GetResponse());
 
             return storageResponse.FileName;
         }
@@ -93,10 +93,10 @@ namespace Zaabee.FastDfsClient
         /// <returns>文件名</returns>
         public string UploadAppenderFile(StorageNode storageNode, byte[] contentByte, string fileExt)
         {
-            var storageReqeust = UploadAppendFile.Instance.GetRequest(storageNode.EndPoint, storageNode.StorePathIndex,
+            var storageRequest = UploadAppendFile.Instance.GetRequest(storageNode.EndPoint, storageNode.StorePathIndex,
                 contentByte.Length, fileExt, contentByte);
 
-            var storageResponse = new UploadAppendFile.Response(storageReqeust.GetResponse());
+            var storageResponse = new UploadAppendFile.Response(storageRequest.GetResponse());
 
             return storageResponse.FileName;
         }
@@ -115,9 +115,9 @@ namespace Zaabee.FastDfsClient
 
             var storeEndPoint = new IPEndPoint(IPAddress.Parse(trackerResponse.IpStr), trackerResponse.Port);
 
-            var storageReqeust = Storage.AppendFile.Instance.GetRequest(storeEndPoint, fileName, contentByte);
+            var storageRequest = Storage.AppendFile.Instance.GetRequest(storeEndPoint, fileName, contentByte);
 
-            storageReqeust.GetResponse();
+            storageRequest.GetResponse();
         }
 
         /// <summary>
@@ -132,8 +132,8 @@ namespace Zaabee.FastDfsClient
                 var trackerRequest = QueryUpdate.Instance.GetRequest(groupName, fileName);
                 var trackerResponse = new QueryUpdate.Response(trackerRequest.GetResponse());
                 var storeEndPoint = new IPEndPoint(IPAddress.Parse(trackerResponse.IpStr), trackerResponse.Port);
-                var storageReqeust = DeleteFile.Instance.GetRequest(storeEndPoint, groupName, fileName);
-                storageReqeust.GetResponse();
+                var storageRequest = DeleteFile.Instance.GetRequest(storeEndPoint, groupName, fileName);
+                storageRequest.GetResponse();
             }
             catch (FdfsException)
             {
@@ -150,10 +150,10 @@ namespace Zaabee.FastDfsClient
         {
             try
             {
-                var storageReqeust = Storage.DownloadFile.Instance.GetRequest(storageNode.EndPoint, 0L, 0L,
+                var storageRequest = Storage.DownloadFile.Instance.GetRequest(storageNode.EndPoint, 0L, 0L,
                     storageNode.GroupName, fileName);
 
-                var storageResponse = new DownloadFile.Response(storageReqeust.GetResponse());
+                var storageResponse = new DownloadFile.Response(storageRequest.GetResponse());
 
                 return storageResponse.Content;
             }
@@ -173,10 +173,10 @@ namespace Zaabee.FastDfsClient
         /// <returns>文件内容</returns>
         public byte[] DownloadFile(StorageNode storageNode, string fileName, long offset, long length)
         {
-            var storageReqeust = Storage.DownloadFile.Instance.GetRequest(storageNode.EndPoint, offset,
+            var storageRequest = Storage.DownloadFile.Instance.GetRequest(storageNode.EndPoint, offset,
                 length, storageNode.GroupName, fileName);
 
-            var storageResponse = new DownloadFile.Response(storageReqeust.GetResponse());
+            var storageResponse = new DownloadFile.Response(storageRequest.GetResponse());
 
             return storageResponse.Content;
         }
@@ -189,10 +189,10 @@ namespace Zaabee.FastDfsClient
         /// <returns></returns>
         public FdfsFileInfo GetFileInfo(StorageNode storageNode, string fileName)
         {
-            var storageReqeust =
+            var storageRequest =
                 QueryFileInfo.Instance.GetRequest(storageNode.EndPoint, storageNode.GroupName, fileName);
 
-            var result = new FdfsFileInfo(storageReqeust.GetResponse());
+            var result = new FdfsFileInfo(storageRequest.GetResponse());
 
             return result;
         }

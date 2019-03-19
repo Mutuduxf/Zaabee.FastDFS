@@ -23,7 +23,7 @@ namespace UnitTest
         [InlineData("group1")]
         public void GetStorageNode(string groupName)
         {
-            var storageNode = FastDfsClient.GetStorageNode(groupName);
+            var storageNode = _client.GetStorageNode(groupName);
             var endPoint = storageNode.EndPoint;
             var nodeGroupName = storageNode.GroupName;
             Assert.Contains(endPoint.Address.ToString(),
@@ -37,7 +37,7 @@ namespace UnitTest
         [InlineData("group1", "A000091712080DOF001.pdf", "pdf")]
         public void FastDfsOperation(string groupName, string filePath, string fileExt)
         {
-            var storageNode = FastDfsClient.GetStorageNode(groupName);
+            var storageNode = _client.GetStorageNode(groupName);
             var uploadFile = File.ReadAllBytes(filePath);
 
             var fileName = _client.UploadFile(storageNode, uploadFile, fileExt);
@@ -55,7 +55,7 @@ namespace UnitTest
         [InlineData("group1", "M00/00/00/REWQDSADSAFSD.gif")]
         public void DownloadNotExistFile(string groupName, string fileName)
         {
-            var storageNode = FastDfsClient.GetStorageNode(groupName);
+            var storageNode = _client.GetStorageNode(groupName);
             Assert.Null(_client.DownloadFile(storageNode, fileName));
         }
 
@@ -63,7 +63,7 @@ namespace UnitTest
         [InlineData("group4")]
         public void GetNotExistNode(string groupName)
         {
-            Assert.Throws<FdfsException>(() => { FastDfsClient.GetStorageNode(groupName); });
+            Assert.Throws<FdfsException>(() => { _client.GetStorageNode(groupName); });
         }
 
         [Theory]
