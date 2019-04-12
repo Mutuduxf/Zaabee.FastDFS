@@ -11,12 +11,10 @@ namespace Zaabee.FastDfsClient
     /// </summary>
     public class FastDfsClient
     {
-        public FastDfsClient(List<IPEndPoint> trackers)
+        public FastDfsClient(List<IPEndPoint> trackers, int connectionTimeout = 30)
         {
-            ConnectionManager.Initialize(trackers);
+            ConnectionManager.Initialize(trackers, connectionTimeout);
         }
-        
-        #region 公共静态方法
 
         /// <summary>
         /// 获取存储节点
@@ -196,7 +194,5 @@ namespace Zaabee.FastDfsClient
 
             return result;
         }
-
-        #endregion
     }
 }

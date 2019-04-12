@@ -62,9 +62,9 @@ namespace Zaabee.FastDfsClient.Common
             return result;
         }
 
-        public Connection GetConnection()
+        public Connection GetConnection(int connectionTimeout)
         {
-            var timeOut = FdfsConfig.ConnectionTimeout * 1000;
+            var timeOut = connectionTimeout * 1000;
 
             var watch = Stopwatch.StartNew();
             while (timeOut > 0)

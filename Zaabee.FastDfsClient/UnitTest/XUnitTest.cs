@@ -16,7 +16,7 @@ namespace UnitTest
             _client = new FastDfsClient(new List<IPEndPoint>
             {
                 new IPEndPoint(IPAddress.Parse("192.168.78.152"), 22122)
-            });
+            }, 30);
         }
 
         [Theory]

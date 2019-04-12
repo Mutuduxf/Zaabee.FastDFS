@@ -11,13 +11,7 @@ namespace Zaabee.FastDfsClient.Common
     /// </summary>
     internal static class ConnectionManager
     {
-        #region 私有字段
-
         private static List<IPEndPoint> _listTrackers = new List<IPEndPoint>();
-
-        #endregion
-
-        #region 公共静态字段
 
         private static readonly ConcurrentDictionary<IPEndPoint, Pool> TrackerPools =
             new ConcurrentDictionary<IPEndPoint, Pool>();
@@ -25,11 +19,11 @@ namespace Zaabee.FastDfsClient.Common
         private static readonly ConcurrentDictionary<IPEndPoint, Pool> StorePools =
             new ConcurrentDictionary<IPEndPoint, Pool>();
 
-        #endregion
+        private static int _connectionTimeout;
 
         #region 公共静态方法
 
-        public static bool Initialize(List<IPEndPoint> trackers)
+        public static bool Initialize(List<IPEndPoint> trackers, int connectionTimeout = 30)
         {
             foreach (var point in trackers)
             {
@@ -38,11 +32,11 @@ namespace Zaabee.FastDfsClient.Common
             }
 
             _listTrackers = trackers;
-
+            _connectionTimeout = connectionTimeout;
             return true;
         }
 
-        public static bool InitializeForConfigSection(FastDfsConfig config)
+        public static bool InitializeForConfigSection(FastDfsConfig config, int connectionTimeout = 30)
         {
             if (config == null) return false;
             var trackers = new List<IPEndPoint>();
@@ -52,7 +46,7 @@ namespace Zaabee.FastDfsClient.Common
                 trackers.Add(new IPEndPoint(IPAddress.Parse(ipInfo.IpAddress), ipInfo.Port));
             }
 
-            return Initialize(trackers);
+            return Initialize(trackers, connectionTimeout);
 
         }
 
@@ -62,7 +56,7 @@ namespace Zaabee.FastDfsClient.Common
 
             var pool = TrackerPools[_listTrackers[index]];
 
-            return pool.GetConnection();
+            return pool.GetConnection(_connectionTimeout);
         }
 
         public static Connection GetStorageConnection(IPEndPoint endPoint)
@@ -70,7 +64,7 @@ namespace Zaabee.FastDfsClient.Common
             if (!StorePools.ContainsKey(endPoint))
                 StorePools.TryAdd(endPoint, new Pool(endPoint, FdfsConfig.StorageMaxConnection));
 
-            return StorePools[endPoint].GetConnection();
+            return StorePools[endPoint].GetConnection(_connectionTimeout);
         }
 
         #endregion
