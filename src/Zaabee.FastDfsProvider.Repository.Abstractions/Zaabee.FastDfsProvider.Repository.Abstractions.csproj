@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <LangVersion>latest</LangVersion>
+        <PackageVersion>2021.1.0</PackageVersion>
+        <Version>2021.1.0</Version>
+        <Authors>Mutuduxf</Authors>
+        <Company>Mutuduxf</Company>
+        <PackageTags>Zaaby Zaabee DFS Provider</PackageTags>
+        <PackageProjectUrl>https://github.com/Mutuduxf/Zaaby.FastDFS</PackageProjectUrl>
+        <Description>The interfaces and abstraction classes for Zaabee FastDfsPrvider repository</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+</Project>

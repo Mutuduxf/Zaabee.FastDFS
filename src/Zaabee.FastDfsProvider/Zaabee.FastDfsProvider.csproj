@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <PackageVersion>2021.1.0</PackageVersion>
+    <Version>2021.1.0</Version>
+    <Authors>Mutuduxf</Authors>
+    <Company>Mutuduxf</Company>
+    <PackageTags>Zaaby Zaabee DFS FastDFS Provider</PackageTags>
+    <PackageProjectUrl>https://github.com/Mutuduxf/Zaaby.FastDFS</PackageProjectUrl>
+    <Description>FastDFS client wrapper for asp.net core or Zaaby</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Zaabee.FastDfs" Version="2021.2.0" />
+    <PackageReference Include="Zaabee.FastDfsProvider.Abstractions" Version="2021.2.0" />
+    <PackageReference Include="Zaabee.FastDfsProvider.Repository.Abstractions" Version="2021.1.0" />
+  </ItemGroup>
+</Project>
