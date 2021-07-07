@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <LangVersion>latest</LangVersion>
-    <PackageVersion>2021.3.0</PackageVersion>
-    <Version>2021.3.0</Version>
+    <PackageVersion>2021.3.1</PackageVersion>
+    <Version>2021.3.1</Version>
     <Authors>Mutuduxf</Authors>
     <Company>Mutuduxf</Company>
     <PackageTags>Zaaby Zaabee DFS Provider</PackageTags>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.12.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.12.4" />
     <PackageReference Include="Zaabee.FastDfsProvider.Repository.Abstractions" Version="2021.1.0" />
   </ItemGroup>
   
